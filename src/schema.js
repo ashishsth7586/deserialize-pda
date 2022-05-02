@@ -12,11 +12,11 @@ class Stream {
     constructor(properties) {
         Object.keys(properties).map((key) => {
             return (this[key] = properties[key]);
-            });
-        }
+        });
     }
+}
 
-export class NativeStream extends Stream {}
+export class NativeStream extends Stream { }
 
 export const NativeStreamSchema = new Map([
     [
@@ -29,8 +29,8 @@ export const NativeStreamSchema = new Map([
                 ["paused", "u64"],
                 ["withdraw_limit", "u64"],
                 ["amount", "u64"],
-                ["sender", "pubkey"],
-                ["recipient", "pubkey"],
+                ["sender", ["u8", 32]], // "u8" can be omit because each element in fixed size array are assumed to be 1 byte by default.
+                ["recipient", ["u8", 32]],
                 ["withdrawn", "u64"],
                 ["paused_at", "u64"]
             ]

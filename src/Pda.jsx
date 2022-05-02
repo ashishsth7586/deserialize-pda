@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { clusterApiUrl, Connection, PublicKey } from '@solana/web3.js';
 import { NativeStream, NativeStreamSchema } from './schema';
 import { deserializeUnchecked } from 'borsh';
-import { extendBorsh } from './borsh';
 
 const Wrappepr = styled.div`
     width: auto;
@@ -17,7 +16,6 @@ const FlexWrapper = styled.div`
     margin-top: 40px;
 `
 
-extendBorsh();
 
 const DeserializePDA = () => {
 
@@ -64,10 +62,10 @@ const DeserializePDA = () => {
                         <form onSubmit={(e) => handleFormSubmit(e)}>
                             <div className="form-group">
                                 <label htmlFor="pda">Enter PDA address</label>
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    id='pda' 
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id='pda'
                                     onChange={(e) => {
                                         handleChange(e)
                                     }}
@@ -79,21 +77,21 @@ const DeserializePDA = () => {
                         {
                             deserializedData ? (
                                 <div className='mt-4'>
-                                <h4>Deserialized Data:</h4>
-                                <hr />
-                                <p>Start Time: {deserializedData.start_time}</p>
-                                <p>End Time: {deserializedData.end_time}</p>
-                                <p>Amount: {deserializedData.amount}</p>
-                                <p>Sender: {deserializedData.sender}</p>
-                                <p>Recipient: {deserializedData.recipient}</p>
-                                <p>Paused: {deserializedData.paused}</p>
-                                <p>Paused At: {deserializedData.paused_at}</p>
-                                <p>withdrawn: {deserializedData.withdrawn}</p>
-                                <hr />
+                                    <h4>Deserialized Data:</h4>
+                                    <hr />
+                                    <p>Start Time: {deserializedData.start_time}</p>
+                                    <p>End Time: {deserializedData.end_time}</p>
+                                    <p>Amount: {deserializedData.amount}</p>
+                                    <p>Sender: {deserializedData.sender}</p>
+                                    <p>Recipient: {deserializedData.recipient}</p>
+                                    <p>Paused: {deserializedData.paused}</p>
+                                    <p>Paused At: {deserializedData.paused_at}</p>
+                                    <p>withdrawn: {deserializedData.withdrawn}</p>
+                                    <hr />
                                 </div>
                             ) : ""
                         }
-                        <p className='text-muted' style={{ fontSize: "10px"}}>Note: You might get the garbage value of `Paused at` and `Withdrawn` for PDA of earlier version.</p>
+                        <p className='text-muted' style={{ fontSize: "10px" }}>Note: You might get the garbage value of `Paused at` and `Withdrawn` for PDA of earlier version.</p>
                     </div>
                 </FlexWrapper>
             </div>
